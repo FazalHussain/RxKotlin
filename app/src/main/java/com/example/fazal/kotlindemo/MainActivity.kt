@@ -9,6 +9,7 @@ import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import rx.Subscription
 
 /***
  * MainActivity is a Demo Activity for beginners who have recently shift in Kotlin.
@@ -21,6 +22,8 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var subscription: Subscription
 
     /***
      * Companion object is an object which is used to make variable & function static.
@@ -44,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         //Subscribe the observable in the worker thread by default it is in UI {@link Thread}
         //observe the data on the main thread. When the data receive {@link onNext} call
         //when there is an error onError call. onComplete call 1 time when all the data recieved.
-        getDataObservable()
+        subscription = getDataObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -100,6 +103,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         return list
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!subscription.isUnsubscribed) {
+            subscription.unsubscribe()
+        }
     }
 
 }
