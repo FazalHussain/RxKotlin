@@ -1,4 +1,4 @@
-package com.example.fazal.kotlindemo;
+package com.kotlin.fazal.kotlindemo;
 
 import org.junit.Test;
 

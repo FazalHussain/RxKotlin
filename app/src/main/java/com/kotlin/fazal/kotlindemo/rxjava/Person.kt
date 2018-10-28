@@ -1,6 +1,4 @@
-package com.example.fazal.kotlindemo.rxjava
-
-import java.util.*
+package com.kotlin.fazal.kotlindemo.rxjava
 
 /***
  * Person Class Model Class

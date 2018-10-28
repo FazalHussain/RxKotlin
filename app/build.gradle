@@ -6,7 +6,7 @@ apply plugin: 'org.jetbrains.dokka-android'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.fazal.kotlindemo"
+        applicationId "com.kotlin.fazal.kotlindemo"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -37,6 +37,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'io.reactivex:rxjava:1.3.8'
     implementation 'io.reactivex:rxandroid:0.24.0'
+    compile 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 }
 repositories {
     mavenCentral()
